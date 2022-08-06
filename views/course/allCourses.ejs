@@ -1,0 +1,42 @@
+<% layout('layout/boilerplate.ejs') %>
+    <!-- <%- include('../partials/navbar.ejs') %> -->
+
+    <div class="container d-flex flex-column">
+        <h1 class="text-center">All Courses</h1>
+        <% for(course of allCourses){ %>
+            <div class="card mb-3">
+                <div class="card-body ">
+                    <h5 class="card-title text-uppercase">
+                        <%= course.courseName %>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted ">
+                        <%= course.description %>
+
+                    </h6>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        START DATE :
+                        <%= course.startDate.toDateString() %>
+                    </h6>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        END DATE :
+                        <%= course.endDate.toDateString() %>
+                    </h6>
+
+                    <p class="card-text">Users Enrolled <span class="badge bg-primary"> <%= course.users.length %> </span>
+                    </p>
+
+                    <ul class="list-group list-group-horizontal">
+                        <% course.users.map(o => {  %>
+                            <li class=" list-group-item bg-success bg-opacity-25 me-2 ">
+                                <%= o %>
+                            </li>
+                            <% }) %>
+                    </ul>
+                    <form action="/joinCourse/<%=course.id%>" method="post">
+                        <button type="submit" class="btn btn-danger mt-3">Join</button>
+                    </form>
+
+                </div>
+            </div>
+            <% } %>
+    </div>

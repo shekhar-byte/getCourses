@@ -1,0 +1,31 @@
+<% layout('layout/boilerplate.ejs') %>
+    <!-- <%- include('partials/navbar.ejs') %> -->
+
+    <div class="container d-flex flex-column">
+        <h1 class="text-center">All Users</h1>
+        <% for(user of allUser){ %>
+            <div class="card mb-3">
+                <div class="card-body ">
+                    <h5 class="card-title text-uppercase">
+                        <%= user.name %>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted text-uppercase">
+                        <%= user.proffesion %> ,
+                            <%= user.age %>
+                    </h6>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        <%= user.email %>
+                    </h6>
+                    <p class="card-text">Courses Enrolled In <span class="badge bg-primary"> <%= user.courses.length %> </span></p>
+                    <ul class="list-group list-group-horizontal">
+                        <% user.courses.map(o => {  %>
+                            <li class=" list-group-item bg-success bg-opacity-25 me-2 ">
+                                <%= o %>
+                            </li>
+                            <% }) %>
+                    </ul>
+
+                </div>
+            </div>
+            <% } %>
+    </div>
