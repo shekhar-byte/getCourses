@@ -61,6 +61,7 @@ app.get('/', (req, res) => {
 app.use('/', userRoutes)
 app.use('/', courseRoutes)
 
-app.listen(3000, (req, res) => {
-    console.log("listening at 3000")
+const PORT = process.env.PORT || 3000
+app.listen(PORT, (req, res) => {
+    console.log(`listening at ${PORT}`)
 })
